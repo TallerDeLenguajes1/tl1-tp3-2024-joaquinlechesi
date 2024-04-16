@@ -41,16 +41,42 @@ int main()
             
         }
         //k++;
-        float maximo = 0, minimo;
+        float maximo = 0, minimo = 0;
         int mes, anio;
         for (size_t i = 0; i < fila; i++)
         {
             for (size_t j = 0; j < columna; j++)
             {
-                // if ()
-                // {
-                    
-                // }
+                if (maximo == 0)
+                {
+                    maximo = produccion[i][j];
+                    mes = j;
+                    anio = i;
+                }
+                else
+                {
+                    if (produccion[i][j] > maximo)
+                    {
+                        maximo = produccion[i][j];
+                        mes = j;
+                        anio = i;
+                    }
+                }
+                if (minimo == 0)
+                {
+                    minimo = produccion[i][j];
+                    //mes = j;
+                    //anio = i;
+                }
+                else
+                {
+                    if (produccion[i][j] < minimo)
+                    {
+                        minimo = produccion[i][j];
+                        //mes = j;
+                        //anio = i;
+                    }
+                }
                 
             }
             
