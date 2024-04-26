@@ -14,7 +14,7 @@ int main()
     //char nombres[cantidad], *p_nombres;
     cargarNombres(lista);
     mostrarNombres(lista);
-    free(lista);
+    free(lista); //libero el puntero
 
     return 0;
 }
