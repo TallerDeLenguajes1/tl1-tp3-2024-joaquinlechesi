@@ -130,6 +130,7 @@ void totalDeProducto(Producto *p_producto){
 
 void mostrarClientes(Cliente *p_ListaClientes, int cantidad){
     puts("\tFUNCION MOSTRAR CLIENTES");
+    //int cantidades = p_ListaClientes
     for (int i = 0; i < cantidad; i++)
     {
         printf("Cliente n° %d\nNombre: %s\n", p_ListaClientes->ClienteID, p_ListaClientes->NombreCliente);
