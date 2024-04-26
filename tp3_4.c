@@ -20,7 +20,8 @@ typedef struct
 }Cliente;
 
 void cargarClientes(Cliente *p_ListaClientes, int cantidad);
-void totalDeProducto(Producto *precio, int cantidad);
+//void totalDeProducto(Producto *p_producto, int cantidad);
+void totalDeProducto(Producto *p_producto);
 void mostrarClientes(Cliente *p_ListaClientes, int cantidad);
 
 int main()
@@ -88,7 +89,7 @@ int main()
 }
 
 void cargarClientes(Cliente *p_ListaClientes, int cantidad){
-    puts("FUNCION CARGAR CLIENTES");
+    puts("\tFUNCION CARGAR CLIENTES");
     //p_ListaClientes = (Cliente *)malloc(cantidad * sizeof(Cliente));
     int tamanio;
     for (int i = 0; i < cantidad; i++)
@@ -116,29 +117,34 @@ void cargarClientes(Cliente *p_ListaClientes, int cantidad){
             p_ListaClientes[i].Productos[j].PrecioUnitario = rand() % 91 + 10;
         }
     }
+    printf("\n");
     
 }
 
-void totalDeProducto(Producto *precio, int cantidad){
-    float resultado = precio->PrecioUnitario * cantidad;
+//void totalDeProducto(Producto *p_producto, int cantidad){
+void totalDeProducto(Producto *p_producto){
+    //float resultado = precio->PrecioUnitario * cantidad;
+    float resultado = p_producto->PrecioUnitario * p_producto->Cantidad;
     printf("Precio por el total de productos: %.2f\n", resultado);
 }
 
 void mostrarClientes(Cliente *p_ListaClientes, int cantidad){
-    puts("FUNCION MOSTRAR CLIENTES");
+    puts("\tFUNCION MOSTRAR CLIENTES");
     for (int i = 0; i < cantidad; i++)
     {
         printf("Cliente n° %d\nNombre: %s\n", p_ListaClientes->ClienteID, p_ListaClientes->NombreCliente);
         printf("Cantidad de productos del cliente: %d\n", p_ListaClientes->CantidadProductosAPedir);
         for (int j = 0; j < p_ListaClientes->CantidadProductosAPedir; j++)
         {
-            printf("Productos del cliente:\nID del Producto: %d\n", p_ListaClientes->Productos->ProductoID); // recordar: estructura hacia otra estructura mediante puntero es con operador flecha
+            printf("ID del Producto: %d\n", p_ListaClientes->Productos->ProductoID); // recordar: estructura hacia otra estructura mediante puntero es con operador flecha
             printf("Nombre del producto:\n%s\n", p_ListaClientes->Productos->TipoProducto);
             printf("Cantidad del producto: %d\n", p_ListaClientes->Productos->Cantidad);
             printf("Precio unitario del producto: %.2f\n", p_ListaClientes->Productos->PrecioUnitario);
-            totalDeProducto(p_ListaClientes->Productos, p_ListaClientes->CantidadProductosAPedir);
+            totalDeProducto(p_ListaClientes->Productos);
             p_ListaClientes->Productos++;
         }
         p_ListaClientes++;
+        printf("\n\t--.--\n");
     }
+    printf("\n");
 }
